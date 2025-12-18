@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SNES RMS Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Link to a pixel font for authentic SNES style (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">Super Nintendo RMS Calculator</h1>
+    </header>
+    <main>
+      <div class="input-section">
+        <label for="numbersInput">Enter numbers (comma-separated):</label>
+        <input type="text" id="numbersInput" placeholder="e.g., 1,2,3,4,5" />
+      </div>
+      <button id="calculateBtn">Calculate RMS</button>
+      <div class="result-section">
+        <h2>Result:</h2>
+        <p id="resultDisplay">Waiting for input...</p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 SNES Style RMS Calculator</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
