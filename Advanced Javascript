@@ -1,0 +1,63 @@
+// script.js
+
+// Encapsulate code in an IIFE for modularity and best practices
+(function() {
+  // Retrieve DOM elements
+  const inputField = document.getElementById('numbersInput');
+  const resultDisplay = document.getElementById('resultDisplay');
+  const calculateBtn = document.getElementById('calculateBtn');
+
+  /**
+   * Parses the user input string into an array of numbers.
+   * @returns {number[]} Array of parsed numbers.
+   */
+  function parseInput() {
+    const input = inputField.value.trim();
+    if (!input) return [];
+    // Split by comma, remove extra spaces, filter out invalid entries
+    const parts = input.split(',');
+    const numbers = parts
+      .map(part => parseFloat(part.trim()))
+      .filter(num => !isNaN(num));
+    return numbers;
+  }
+
+  /**
+   * Calculates the Root Mean Square of an array of numbers.
+   * @param {number[]} numbers 
+   * @returns {number} RMS value.
+   */
+  function calculateRMS(numbers) {
+    if (numbers.length === 0) return 0;
+    const sumSquares = numbers.reduce((acc, num) => acc + num * num, 0);
+    const meanSquares = sumSquares / numbers.length;
+    return Math.sqrt(meanSquares);
+  }
+
+  /**
+   * Handles the click event for the Calculate button.
+   */
+  function handleCalculate() {
+    const numbers = parseInput();
+
+    if (numbers.length === 0) {
+      resultDisplay.textContent = 'Please enter valid numbers!';
+      resultDisplay.style.color = '#ff0000'; // Red for error
+      return;
+    }
+
+    const rmsValue = calculateRMS(numbers);
+    resultDisplay.textContent = rmsValue.toFixed(10);
+    resultDisplay.style.color = '#00ffcc'; // Reset color to default
+  }
+
+  // Add event listener to the button
+  calculateBtn.addEventListener('click', handleCalculate);
+
+  // Optional: allow pressing Enter to trigger calculation
+  inputField.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      handleCalculate();
+    }
+  });
+})();
