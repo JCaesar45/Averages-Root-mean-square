@@ -1,0 +1,11 @@
+function rms(numbers) {
+  // Calculate the sum of squares
+  const sumOfSquares = numbers.reduce((acc, x) => acc + x * x, 0);
+  // Calculate the mean of the squares
+  const meanOfSquares = sumOfSquares / numbers.length;
+  // Return the square root of the mean
+  return Math.sqrt(meanOfSquares);
+}
+
+// Test with the numbers 1 through 10
+console.log(rms([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
